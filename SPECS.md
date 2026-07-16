@@ -1,12 +1,143 @@
-# AgentHub — Panel de Administración
+# AgentHub Admin Dashboard — Especificación Técnica
 
-## 1. Descripción del producto
+## Versión
+1.0 — Prototipo Frontend
 
-### ¿Qué es AgentHub?
+## Stack Tecnológico
+- HTML5
+- TailwindCSS (CDN v3)
+- JavaScript ES6 (Vanilla)
+- Google Fonts: Inter + JetBrains Mono
 
-AgentHub es una plataforma SaaS que permite a empresas alquilar agentes de Inteligencia Artificial especializados para automatizar tareas de negocio. Cada agente puede incorporar diferentes **Skills** (habilidades) como navegación web, lectura de documentos, gestión de calendarios, automatización de procesos o conexión con servicios externos.
+## Estructura de Archivos
 
-El objetivo del panel es proporcionar una interfaz de administración para supervisar toda la plataforma y servir como referencia para el futuro desarrollo del backend.
+```
+AgentHub/
+├── index.html          # Estructura principal del dashboard
+├── config.yaml         # Configuración del proyecto
+├── context.md          # Contexto del negocio
+├── design.md           # Especificación de diseño
+├── README.md           # Documentación inicial
+├── SPECS.md            # Este archivo
+├── css/
+│   └── style.css       # Estilos personalizados y animaciones
+└── js/
+    ├── data.js         # Datos hardcodeados (mock)
+    └── app.js          # Lógica de la aplicación
+```
+
+## Secciones Implementadas
+
+### 1. Dashboard
+- **4 KPIs**: Ingresos del mes, Descuentos, Agentes activos, Agentes fallando
+- Cada KPI incluye: título, valor, icono, variación porcentual
+- **Gráfico de actividad semanal**: Barras apiladas simulando consultas y agentes por día
+
+### 2. Gestión de Usuarios
+- Tabla con: Nombre (avatar), Email, Plan, Estado, Acciones
+- Badges: Free (gris), Pro (índigo), Enterprise (púrpura)
+- Dropdown por fila: Ver detalle (modal) | Eliminar (toast)
+- Modal: Nombre, Email, Empresa, Plan, Estado, Fecha de registro
+
+### 3. Gestión de Agentes
+- Cards de agentes: Nombre, Propietario, Estado, Skills
+- Skills colapsables con transición suave (max-height + opacity)
+- Dropdown: Configurar (muestra System Prompt en modal) | Eliminar
+
+### 4. Skills
+- Panel informativo sobre qué es una Skill
+- Lista completa con: Nombre, Descripción, N° de agentes
+- Dropdown: Ver detalle (modal con agentes que la usan) | Eliminar
+
+### 5. Contrataciones
+- Tabla con: Cliente, Agente, Skills, Fechas, Total, Acciones
+- Skills truncadas con indicador "+N más"
+- Modal: Cliente, Agente, Duración, Periodo, Skills con precios individuales, Total
+
+### 6. Log de Errores
+- Tabla con: Timestamp, Agente, Tipo (badge), Descripción, Acciones
+- Badges: Critical (rojo), Warning (amarillo), Info (azul)
+- Dropdown: Ver detalle (modal con Stack Trace, Mensaje, Contexto) | Marcar como resuelto
+- Los errores resueltos se persisten en localStorage y se muestran con opacidad reducida
+
+## Componentes Reutilizables
+
+### Cards
+- `border-radius: 12px`, sombra ligera, padding uniforme
+- Hover: translateY(-2px) + shadow enhancement
+
+### Botones
+- `btn-primary`: Fondo índigo
+- `btn-secondary`: Borde con fondo transparente
+- `btn-danger`: Rojo
+- `btn-ghost`: Transparente con hover
+- `btn-icon`: 32x32 para iconos
+
+### Dropdown
+- Activación con botón ⋮ (tres puntos)
+- Animación: scale + translateY
+- Cierre automático al hacer clic fuera o seleccionar opción
+- Navegación por teclado (Enter)
+
+### Modal
+- Overlay oscuro con backdrop-filter: blur
+- Animación fade + scale
+- Cierre: botón X, click en backdrop, tecla Escape
+- Scroll interno si el contenido excede
+
+### Badges
+- `badge-active` (verde)
+- `badge-inactive` (gris)
+- `badge-failing` (rojo)
+- `badge-critical` (rojo)
+- `badge-warning` (amarillo)
+- `badge-info` (azul)
+- `badge-free` (gris)
+- `badge-pro` (índigo)
+- `badge-enterprise` (púrpura)
+
+## Dark Mode
+- Implementado con clase `dark` de Tailwind
+- Persistencia en localStorage (`agenthub-theme`)
+- Toggle en topbar
+- Afecta: fondos, cards, sidebar, texto, tablas, botones, modales, dropdowns
+
+## Responsive Design
+- **Desktop**: Sidebar visible (260px)
+- **Tablet (≤1024px)**: Sidebar colapsable, hamburger menu
+- **Mobile (≤768px)**: Drawer sidebar, padding reducido
+- **Mobile (≤480px)**: KPIs en 1 columna
+- Tablas con scroll horizontal en dispositivos pequeños
+
+## Accesibilidad
+- `aria-label` en todos los botones interactivos
+- `role="dialog"` y `aria-modal="true"` en modales
+- Navegación por teclado (Enter en dropdown items, Escape cierra modales)
+- Contraste suficiente para cumplir WCAG AA
+
+## Datos
+- 8 usuarios
+- 9 agentes
+- 12 skills
+- 7 contrataciones
+- 7 errores de log
+- Todos hardcodeados en `js/data.js`
+
+## Acciones Simuladas
+- Eliminar usuario → Toast de confirmación
+- Eliminar agente → Toast de confirmación
+- Eliminar skill → Toast de confirmación
+- Marcar error como resuelto → Persiste en localStorage + Toast
+- Navegación entre secciones → SPA simulado (show/hide)
+
+## Animaciones
+- KPIs: fade-in con delay escalonado
+- Modal: fade + scale (0.25s)
+- Dropdown: scale + translateY (0.2s)
+- Skills collapse: max-height + opacity (0.35s)
+- Cards: hover lift
+- Toast: slide-in desde derecha (0.3s)
+- Tema: transición de colores (0.3s)
 
 ### Usuario administrador
 

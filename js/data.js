@@ -1,0 +1,428 @@
+/* ============================================================
+   AgentHub - Hardcoded Data
+   ============================================================ */
+
+const AgentHub = window.AgentHub || {};
+
+// ============================================================
+// KPI Metrics
+// ============================================================
+AgentHub.metrics = {
+  monthlyRevenue: 28450,
+  revenueChange: 12.5,
+  discounts: 3240,
+  discountsChange: -3.2,
+  activeAgents: 47,
+  activeAgentsChange: 8.1,
+  failingAgents: 3,
+  failingAgentsChange: -2,
+  activeContracts: 24,
+  activeContractsChange: 15.3,
+};
+
+// ============================================================
+// Users
+// ============================================================
+AgentHub.users = [
+  {
+    id: 1,
+    name: 'María García',
+    email: 'maria.garcia@techcorp.com',
+    company: 'TechCorp S.A.',
+    plan: 'Enterprise',
+    status: 'active',
+    registeredAt: '2025-11-12',
+  },
+  {
+    id: 2,
+    name: 'Carlos Mendoza',
+    email: 'carlos.m@innovate.io',
+    company: 'Innovate.io',
+    plan: 'Pro',
+    status: 'active',
+    registeredAt: '2026-01-23',
+  },
+  {
+    id: 3,
+    name: 'Ana López',
+    email: 'ana.lopez@dataflow.com',
+    company: 'DataFlow Inc.',
+    plan: 'Enterprise',
+    status: 'active',
+    registeredAt: '2025-09-05',
+  },
+  {
+    id: 4,
+    name: 'Roberto Sánchez',
+    email: 'roberto.s@startup.mx',
+    company: 'Startup MX',
+    plan: 'Free',
+    status: 'inactive',
+    registeredAt: '2026-03-18',
+  },
+  {
+    id: 5,
+    name: 'Laura Jiménez',
+    email: 'laura.j@bigdata.co',
+    company: 'BigData Co.',
+    plan: 'Pro',
+    status: 'active',
+    registeredAt: '2026-02-10',
+  },
+  {
+    id: 6,
+    name: 'Pedro Ramírez',
+    email: 'pedro.r@analytix.com',
+    company: 'Analytix Corp',
+    plan: 'Enterprise',
+    status: 'active',
+    registeredAt: '2025-07-22',
+  },
+  {
+    id: 7,
+    name: 'Sofía Torres',
+    email: 'sofia.t@webgen.co',
+    company: 'WebGen Studios',
+    plan: 'Free',
+    status: 'inactive',
+    registeredAt: '2026-04-01',
+  },
+  {
+    id: 8,
+    name: 'Diego Hernández',
+    email: 'diego.h@cloudsys.com',
+    company: 'CloudSys Global',
+    plan: 'Pro',
+    status: 'active',
+    registeredAt: '2026-05-14',
+  },
+];
+
+// ============================================================
+// Agents
+// ============================================================
+AgentHub.agents = [
+  {
+    id: 1,
+    name: 'DataBot',
+    owner: 'TechCorp S.A.',
+    status: 'active',
+    systemPrompt: 'Eres DataBot, un agente especializado en análisis de datos empresariales. Tu función es procesar grandes volúmenes de información, generar reportes detallados y detectar patrones de negocio. Debes responder siempre con datos precisos y visualizaciones claras. Prioriza la exactitud sobre la velocidad.',
+    skills: ['Análisis de Datos', 'Generación de Reportes', 'Visualización'],
+  },
+  {
+    id: 2,
+    name: 'MailAssist',
+    owner: 'Innovate.io',
+    status: 'active',
+    systemPrompt: 'Eres MailAssist, un asistente de correo electrónico inteligente. Tu tarea es gestionar bandejas de entrada, redactar respuestas profesionales, organizar emails por prioridad y archivar conversaciones. Mantén un tono profesional y cordial en todas las comunicaciones.',
+    skills: ['Gestión de Email', 'Redacción Automática', 'Archivo Inteligente'],
+  },
+  {
+    id: 3,
+    name: 'DocParser',
+    owner: 'DataFlow Inc.',
+    status: 'active',
+    systemPrompt: 'Eres DocParser, un agente experto en procesamiento de documentos. Tu función es extraer, clasificar y estructurar información de documentos PDF, imágenes y archivos de texto. Asegúrate de mantener la integridad de los datos extraídos y señalar cualquier ambigüedad.',
+    skills: ['Lectura PDF', 'Extracción de Datos', 'OCR'],
+  },
+  {
+    id: 4,
+    name: 'WebScout',
+    owner: 'BigData Co.',
+    status: 'active',
+    systemPrompt: 'Eres WebScout, un agente de navegación web autónomo. Tu propósito es buscar información en internet, verificar fuentes, monitorizar cambios en sitios web y recopilar datos de competidores. Siempre verifica la credibilidad de las fuentes antes de reportar.',
+    skills: ['Navegación Web', 'Monitoreo de Sitios', 'Investigación'],
+  },
+  {
+    id: 5,
+    name: 'CalBot',
+    owner: 'Startup MX',
+    status: 'inactive',
+    systemPrompt: 'Eres CalBot, un agente de gestión de calendarios. Organizas reuniones, coordinas horarios entre participantes, envías recordatorios y optimizas la agenda diaria. Debes considerar zonas horarias y preferencias de los usuarios al programar.',
+    skills: ['Gestión de Calendario', 'Coordinación de Reuniones', 'Recordatorios'],
+  },
+  {
+    id: 6,
+    name: 'CRMBot',
+    owner: 'CloudSys Global',
+    status: 'active',
+    systemPrompt: 'Eres CRMBot, un agente de integración con sistemas CRM. Tu misión es sincronizar datos de clientes, actualizar registros, gestionar pipelines de ventas y generar informes de rendimiento comercial. Mantén la confidencialidad de los datos de clientes.',
+    skills: ['Integración CRM', 'Gestión de Ventas', 'Reportes Comerciales'],
+  },
+  {
+    id: 7,
+    name: 'AutoMate',
+    owner: 'Analytix Corp',
+    status: 'failing',
+    systemPrompt: 'Eres AutoMate, un agente de automatización de procesos. Ejecutas flujos de trabajo automatizados, integras APIs, transformas datos entre formatos y orquestas tareas repetitivas. Reporta inmediatamente cualquier fallo en la ejecución.',
+    skills: ['Automatización', 'Integración API', 'Transformación de Datos'],
+  },
+  {
+    id: 8,
+    name: 'DBAnalyzer',
+    owner: 'TechCorp S.A.',
+    status: 'active',
+    systemPrompt: 'Eres DBAnalyzer, un agente de consulta de bases de datos. Tu función es ejecutar consultas SQL, optimizar rendimiento de bases de datos, detectar anomalías y sugerir índices. Trabajas con PostgreSQL, MySQL y MongoDB. Prioriza la seguridad de los datos.',
+    skills: ['Consultas SQL', 'Optimización BD', 'Detección de Anomalías'],
+  },
+  {
+    id: 9,
+    name: 'WebGenBot',
+    owner: 'WebGen Studios',
+    status: 'inactive',
+    systemPrompt: 'Eres WebGenBot, un agente generador de contenido web. Creas páginas web, redactas copy, generas imágenes y optimizas SEO. Tu estilo es creativo pero profesional, adaptándote a la voz de la marca.',
+    skills: ['Generación Web', 'Redacción SEO', 'Optimización de Contenido'],
+  },
+];
+
+// ============================================================
+// Skills Catalog
+// ============================================================
+AgentHub.skills = [
+  {
+    id: 1,
+    name: 'Navegación Web',
+    description: 'Capacidad para navegar por internet, buscar información y extraer contenido de sitios web de forma autónoma.',
+    agentCount: 4,
+  },
+  {
+    id: 2,
+    name: 'Lectura PDF',
+    description: 'Habilidad para leer, interpretar y extraer información estructurada de documentos PDF.',
+    agentCount: 3,
+  },
+  {
+    id: 3,
+    name: 'Gestión de Calendario',
+    description: 'Permite organizar eventos, coordinar reuniones y gestionar agendas respetando zonas horarias.',
+    agentCount: 2,
+  },
+  {
+    id: 4,
+    name: 'Gestión de Email',
+    description: 'Capacidad para gestionar bandejas de entrada, redactar respuestas y organizar correos electrónicos.',
+    agentCount: 3,
+  },
+  {
+    id: 5,
+    name: 'Consultas SQL',
+    description: 'Ejecuta consultas a bases de datos relacionales, optimiza queries y analiza resultados.',
+    agentCount: 2,
+  },
+  {
+    id: 6,
+    name: 'Integración CRM',
+    description: 'Se integra con sistemas CRM para sincronizar datos de clientes y gestionar pipelines de ventas.',
+    agentCount: 2,
+  },
+  {
+    id: 7,
+    name: 'Automatización',
+    description: 'Ejecuta flujos de trabajo automatizados, integra APIs y orquesta tareas repetitivas.',
+    agentCount: 3,
+  },
+  {
+    id: 8,
+    name: 'Análisis de Datos',
+    description: 'Procesa grandes volúmenes de datos, genera reportes y detecta patrones de negocio.',
+    agentCount: 4,
+  },
+  {
+    id: 9,
+    name: 'Extracción de Datos',
+    description: 'Extrae información estructurada de documentos, imágenes y archivos no estructurados.',
+    agentCount: 3,
+  },
+  {
+    id: 10,
+    name: 'Integración API',
+    description: 'Conecta y consume APIs REST y GraphQL para intercambiar datos entre sistemas.',
+    agentCount: 3,
+  },
+  {
+    id: 11,
+    name: 'Monitoreo de Sitios',
+    description: 'Monitorea cambios en sitios web, detecta actualizaciones y genera alertas.',
+    agentCount: 2,
+  },
+  {
+    id: 12,
+    name: 'Generación de Reportes',
+    description: 'Crea reportes detallados con visualizaciones y métricas clave del negocio.',
+    agentCount: 4,
+  },
+];
+
+// ============================================================
+// Contracts (Hires)
+// ============================================================
+AgentHub.contracts = [
+  {
+    id: 1,
+    client: 'TechCorp S.A.',
+    agent: 'DataBot',
+    skills: ['Análisis de Datos', 'Generación de Reportes', 'Visualización'],
+    startDate: '2026-06-01',
+    endDate: '2026-08-31',
+    duration: '3 meses',
+    skillPrices: [500, 350, 400],
+    total: 1250,
+    agentId: 1,
+    clientId: 1,
+  },
+  {
+    id: 2,
+    client: 'Innovate.io',
+    agent: 'MailAssist',
+    skills: ['Gestión de Email', 'Redacción Automática', 'Archivo Inteligente'],
+    startDate: '2026-05-15',
+    endDate: '2026-11-15',
+    duration: '6 meses',
+    skillPrices: [400, 300, 200],
+    total: 900,
+    agentId: 2,
+    clientId: 2,
+  },
+  {
+    id: 3,
+    client: 'DataFlow Inc.',
+    agent: 'DocParser',
+    skills: ['Lectura PDF', 'Extracción de Datos', 'OCR'],
+    startDate: '2026-04-01',
+    endDate: '2026-09-30',
+    duration: '6 meses',
+    skillPrices: [450, 350, 300],
+    total: 1100,
+    agentId: 3,
+    clientId: 3,
+  },
+  {
+    id: 4,
+    client: 'BigData Co.',
+    agent: 'WebScout',
+    skills: ['Navegación Web', 'Monitoreo de Sitios', 'Investigación'],
+    startDate: '2026-06-15',
+    endDate: '2026-07-15',
+    duration: '1 mes',
+    skillPrices: [300, 250, 200],
+    total: 750,
+    agentId: 4,
+    clientId: 5,
+  },
+  {
+    id: 5,
+    client: 'CloudSys Global',
+    agent: 'CRMBot',
+    skills: ['Integración CRM', 'Gestión de Ventas', 'Reportes Comerciales'],
+    startDate: '2026-07-01',
+    endDate: '2026-12-31',
+    duration: '6 meses',
+    skillPrices: [600, 400, 350],
+    total: 1350,
+    agentId: 6,
+    clientId: 8,
+  },
+  {
+    id: 6,
+    client: 'Analytix Corp',
+    agent: 'AutoMate',
+    skills: ['Automatización', 'Integración API', 'Transformación de Datos'],
+    startDate: '2026-03-01',
+    endDate: '2026-05-31',
+    duration: '3 meses',
+    skillPrices: [500, 450, 300],
+    total: 1250,
+    agentId: 7,
+    clientId: 6,
+  },
+  {
+    id: 7,
+    client: 'TechCorp S.A.',
+    agent: 'DBAnalyzer',
+    skills: ['Consultas SQL', 'Optimización BD', 'Detección de Anomalías'],
+    startDate: '2026-07-01',
+    endDate: '2026-09-30',
+    duration: '3 meses',
+    skillPrices: [550, 400, 350],
+    total: 1300,
+    agentId: 8,
+    clientId: 1,
+  },
+];
+
+// ============================================================
+// Error Logs
+// ============================================================
+AgentHub.errorLogs = [
+  {
+    id: 1,
+    timestamp: '2026-07-15 09:23:14',
+    agent: 'AutoMate',
+    type: 'critical',
+    description: 'Fallo crítico en la ejecución de automatización: timeout en integración API externa.',
+    stackTrace: 'Error: Request timeout after 30000ms\n    at Client.request (api_client.js:142:15)\n    at AutomationEngine.run (engine.js:89:22)\n    at TaskExecutor.execute (executor.js:56:12)\n    at Agent.run (agent.js:34:18)',
+    context: 'El agente AutoMate intentaba ejecutar un flujo de automatización que involucraba la integración con la API de Salesforce. La conexión excedió el tiempo máximo de espera de 30 segundos.',
+    resolved: false,
+  },
+  {
+    id: 2,
+    timestamp: '2026-07-15 07:45:33',
+    agent: 'WebScout',
+    type: 'warning',
+    description: 'El sitio web objetivo devolvió un error 403 Forbidden durante el raspado de datos.',
+    stackTrace: 'HTTPError: 403 Forbidden\n    at WebScout.fetch (web_scout.js:78:19)\n    at Scraper.scrape (scraper.js:45:14)\n    at Agent.run (agent.js:34:18)',
+    context: 'WebScout intentaba acceder a un portal de noticias para recopilar información de la competencia. El sitio bloqueó la solicitud debido a restricciones de acceso.',
+    resolved: false,
+  },
+  {
+    id: 3,
+    timestamp: '2026-07-14 22:12:08',
+    agent: 'DataBot',
+    type: 'info',
+    description: 'Se detectó una anomalía en los datos procesados: valores atípicos en el conjunto de ventas Q2.',
+    stackTrace: 'Info: Anomaly detected in dataset "sales_q2_2026"\n    at DataAnalyzer.detectAnomalies (analyzer.js:203:25)\n    at DataBot.process (databot.js:67:14)\n    at Agent.run (agent.js:34:18)',
+    context: 'DataBot procesaba el reporte trimestral de ventas y detectó valores atípicos en la región de Sudamérica. Se recomienda revisar los datos fuente.',
+    resolved: true,
+  },
+  {
+    id: 4,
+    timestamp: '2026-07-14 18:30:45',
+    agent: 'DocParser',
+    type: 'warning',
+    description: 'El documento PDF contiene imágenes con texto no extraíble. Se requiere OCR adicional.',
+    stackTrace: 'Warning: Non-extractable text found on page 4\n    at DocParser.parse (doc_parser.js:112:22)\n    at PDFProcessor.extract (processor.js:38:16)\n    at Agent.run (agent.js:34:18)',
+    context: 'DocParser procesaba un contrato escaneado donde algunas páginas contenían texto en imágenes. El OCR estándar no pudo extraer el contenido correctamente.',
+    resolved: false,
+  },
+  {
+    id: 5,
+    timestamp: '2026-07-14 15:05:22',
+    agent: 'CRMBot',
+    type: 'critical',
+    description: 'Error de sincronización con Salesforce: la sesión de API expiró y no se pudo renovar.',
+    stackTrace: 'AuthError: Session expired. Token refresh failed.\n    at SalesforceClient.refreshToken (salesforce.js:67:19)\n    at CRMBot.sync (crmbot.js:44:22)\n    at Agent.run (agent.js:34:18)',
+    context: 'CRMBot realizaba una sincronización programada de datos de clientes desde Salesforce. El token de acceso expiró y el proceso de renovación automática falló debido a credenciales desactualizadas.',
+    resolved: false,
+  },
+  {
+    id: 6,
+    timestamp: '2026-07-13 11:42:59',
+    agent: 'MailAssist',
+    type: 'info',
+    description: 'Límite de API de Gmail alcanzado. Se superaron las 1000 solicitudes por minuto.',
+    stackTrace: 'RateLimitError: Quota exceeded for API call Gmail API\n    at GmailClient.send (gmail_client.js:89:23)\n    at MailAssist.processQueue (mailassist.js:56:18)\n    at Agent.run (agent.js:34:18)',
+    context: 'MailAssist estaba procesando una cola de 2500 correos pendientes. El límite de la API de Gmail se alcanzó después de 1000 solicitudes en un minuto.',
+    resolved: true,
+  },
+  {
+    id: 7,
+    timestamp: '2026-07-12 20:15:37',
+    agent: 'DBAnalyzer',
+    type: 'warning',
+    description: 'La consulta SQL ejecutada excedió el tiempo óptimo de ejecución (12s para un límite de 5s).',
+    stackTrace: 'Warning: Query performance degradation detected\n    at QueryOptimizer.analyze (optimizer.js:134:15)\n    at DBAnalyzer.executeQuery (dbanalyzer.js:78:22)\n    at Agent.run (agent.js:34:18)',
+    context: 'DBAnalyzer ejecutó una consulta analítica en la base de datos de producción. La consulta tardó 12 segundos, superando el umbral de rendimiento de 5 segundos.',
+    resolved: false,
+  },
+];

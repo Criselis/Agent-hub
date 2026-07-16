@@ -1,0 +1,121 @@
+project:
+  name: AgentHub Admin Dashboard
+  version: "1.0"
+  type: html-prototype
+
+stack:
+  frontend:
+    - HTML5
+    - TailwindCSS
+    - JavaScript ES6
+
+backend:
+  enabled: false
+
+database:
+  enabled: false
+
+api:
+  enabled: false
+
+theme:
+  supportDarkMode: true
+  framework: tailwind
+  defaultMode: light
+
+layout:
+  sidebar: true
+  topbar: true
+  responsive: true
+
+navigation:
+  - dashboard
+  - users
+  - agents
+  - skills
+  - contracts
+  - error_logs
+
+sections:
+
+  dashboard:
+    metrics:
+      - monthly_revenue
+      - discounts
+      - active_agents
+      - failing_agents
+    chartPlaceholder: true
+
+  users:
+    table: true
+    modal: true
+    dropdown:
+      - view_detail
+      - delete
+
+  agents:
+    cards: true
+    collapsibleSkills: true
+    modal: true
+    dropdown:
+      - configure
+      - delete
+
+  skills:
+    infoPanel: true
+    list: true
+    dropdown:
+      - view_detail
+      - delete
+
+  contracts:
+    table: true
+    modal: true
+    dropdown:
+      - view_detail
+
+  error_logs:
+    table: true
+    badges: true
+    modal: true
+    dropdown:
+      - view_detail
+      - mark_resolved
+
+components:
+
+  cards: true
+
+  modal:
+    backdropClose: true
+    closeButton: true
+
+  dropdown:
+    autoClose: true
+
+  badges:
+    - active
+    - inactive
+    - failing
+    - critical
+    - warning
+    - info
+
+data:
+  source: hardcoded
+
+animations:
+  collapse: true
+  modal: true
+  dropdown: true
+
+accessibility:
+  ariaLabels: true
+  dialogs: true
+  keyboardNavigation: basic
+
+deliverables:
+  - SPECS.md
+  - index.html
+  - styles
+  - javascript
