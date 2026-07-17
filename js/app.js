@@ -295,44 +295,22 @@
     const days = ['Lun', 'Mar', 'Mi\u00e9', 'Jue', 'Vie', 'S\u00e1b', 'Dom'];
     const weekData = [42, 55, 38, 62, 48, 30, 22];
     const weekData2 = [28, 35, 30, 45, 40, 20, 15];
-    const maxVal = Math.max(...weekData, ...weekData2);
-
-    const barHtml = days.map((day, i) => {
-      const h1 = (weekData[i] / maxVal) * 120;
-      const h2 = (weekData2[i] / maxVal) * 120;
-      return `
-        <div class="flex-1 flex flex-col items-center gap-1">
-          <div class="w-full flex flex-col items-center gap-0.5" style="height:120px; justify-content:flex-end;">
-            <div class="w-5/6 rounded-t bg-green-400 dark:bg-green-500 transition-all" style="height:${h2}px"></div>
-            <div class="w-5/6 rounded-t bg-blue-500 dark:bg-blue-400 transition-all" style="height:${h1}px"></div>
-          </div>
-          <span class="text-[10px] text-gray-400 dark:text-gray-500 font-medium">${day}</span>
-        </div>`;
-    }).join('');
-
-    // Rental bar data
     const rentalData = [8, 12, 7, 15, 10, 5, 3];
-    const maxRental = Math.max(...rentalData);
-    const rentalBarHtml = days.map((day, i) => {
-      const h = (rentalData[i] / maxRental) * 120;
-      return `
-        <div class="flex-1 flex flex-col items-center gap-1">
-          <div class="w-full flex items-end justify-center" style="height:120px;">
-            <div class="w-5/6 rounded-t bg-purple-400 dark:bg-purple-500 transition-all" style="height:${h}px"></div>
-          </div>
-          <span class="text-[10px] text-gray-400 dark:text-gray-500 font-medium">${day}</span>
-        </div>`;
-    }).join('');
-
-    // Error trend bars
     const errorData = [3, 5, 2, 7, 4, 1, 0];
-    const maxError = Math.max(...errorData, 1);
-    const errorBarHtml = days.map((day, i) => {
-      const h = (errorData[i] / maxError) * 120;
+    const maxVal = Math.max(...weekData, ...weekData2, ...rentalData, ...errorData);
+
+    const unifiedBarHtml = days.map((day, i) => {
+      const h1 = (weekData[i] / maxVal) * 180;
+      const h2 = (weekData2[i] / maxVal) * 180;
+      const h3 = (rentalData[i] / maxVal) * 180;
+      const h4 = (errorData[i] / maxVal) * 180;
       return `
-        <div class="flex-1 flex flex-col items-center gap-1">
-          <div class="w-full flex items-end justify-center" style="height:120px;">
-            <div class="w-5/6 rounded-t bg-red-400 dark:bg-red-500 transition-all" style="height:${h}px"></div>
+        <div class="flex-1 flex flex-col items-center gap-2">
+          <div class="w-full flex items-end justify-center gap-1" style="height:180px;">
+            <div class="w-3 rounded-t bg-blue-500 dark:bg-blue-400 transition-all hover:opacity-80" style="height:${h1}px" title="Consultas: ${weekData[i]}"></div>
+            <div class="w-3 rounded-t bg-emerald-400 dark:bg-emerald-500 transition-all hover:opacity-80" style="height:${h2}px" title="Agentes: ${weekData2[i]}"></div>
+            <div class="w-3 rounded-t bg-purple-400 dark:bg-purple-500 transition-all hover:opacity-80" style="height:${h3}px" title="Contratos: ${rentalData[i]}"></div>
+            <div class="w-3 rounded-t bg-red-400 dark:bg-red-500 transition-all hover:opacity-80" style="height:${h4}px" title="Errores: ${errorData[i]}"></div>
           </div>
           <span class="text-[10px] text-gray-400 dark:text-gray-500 font-medium">${day}</span>
         </div>`;
@@ -371,68 +349,34 @@
         ${kpiHtml}
       </div>
 
-      <!-- Charts Row -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-8">
-        <div class="chart-card animate-fade-in animate-fade-in-d1" style="animation-fill-mode: both;">
-          <div class="chart-header">
-            <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-            <span>Actividad Semanal</span>
-          </div>
-          <div class="chart-body">
-            <div class="w-full">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="flex items-center gap-2">
-                  <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">Consultas</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <span class="w-3 h-3 rounded-full bg-green-400"></span>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">Agentes</span>
-                </div>
+      <!-- Single Unified Chart - Full Width -->
+      <div class="chart-card mt-8 animate-fade-in animate-fade-in-d1" style="animation-fill-mode: both;">
+        <div class="chart-header">
+          <span class="w-3 h-3 rounded-full bg-blue-500"></span>
+          <span>Actividad Semanal</span>
+        </div>
+        <div class="chart-body">
+          <div class="w-full">
+            <div class="flex items-center gap-6 mb-5">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-sm bg-blue-500 dark:bg-blue-400"></span>
+                <span class="text-xs text-gray-500 dark:text-gray-400">Consultas</span>
               </div>
-              <div class="flex items-end gap-3 h-32">
-                ${barHtml}
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-sm bg-emerald-400 dark:bg-emerald-500"></span>
+                <span class="text-xs text-gray-500 dark:text-gray-400">Agentes</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-sm bg-purple-400 dark:bg-purple-500"></span>
+                <span class="text-xs text-gray-500 dark:text-gray-400">Contratos</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-sm bg-red-400 dark:bg-red-500"></span>
+                <span class="text-xs text-gray-500 dark:text-gray-400">Errores</span>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="chart-card animate-fade-in animate-fade-in-d2" style="animation-fill-mode: both;">
-          <div class="chart-header">
-            <span class="w-3 h-3 rounded-full bg-purple-500"></span>
-            <span>Rentas Activas</span>
-          </div>
-          <div class="chart-body">
-            <div class="w-full">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="flex items-center gap-2">
-                  <span class="w-3 h-3 rounded-full bg-purple-400"></span>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">Contratos</span>
-                </div>
-              </div>
-              <div class="flex items-end gap-3 h-32">
-                ${rentalBarHtml}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="chart-card animate-fade-in animate-fade-in-d3" style="animation-fill-mode: both;">
-          <div class="chart-header">
-            <span class="w-3 h-3 rounded-full bg-red-500"></span>
-            <span>Tendencia de Errores</span>
-          </div>
-          <div class="chart-body">
-            <div class="w-full">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="flex items-center gap-2">
-                  <span class="w-3 h-3 rounded-full bg-red-400"></span>
-                  <span class="text-xs text-gray-500 dark:text-gray-400">Errores</span>
-                </div>
-              </div>
-              <div class="flex items-end gap-3 h-32">
-                ${errorBarHtml}
-              </div>
+            <div class="flex items-end gap-3 h-48">
+              ${unifiedBarHtml}
             </div>
           </div>
         </div>
@@ -440,7 +384,7 @@
 
       <!-- Info Cards Row -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-6">
-        <div class="info-card animate-fade-in animate-fade-in-d4" style="animation-fill-mode: both;">
+        <div class="info-card animate-fade-in animate-fade-in-d2" style="animation-fill-mode: both;">
           <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-blue-500"></span>
             Actividad Reciente
@@ -458,7 +402,7 @@
           </div>
         </div>
 
-        <div class="info-card animate-fade-in animate-fade-in-d5" style="animation-fill-mode: both;">
+        <div class="info-card animate-fade-in animate-fade-in-d3" style="animation-fill-mode: both;">
           <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-green-500"></span>
             Últimos Contratos
@@ -468,7 +412,7 @@
           </div>
         </div>
 
-        <div class="info-card animate-fade-in animate-fade-in-d6" style="animation-fill-mode: both;">
+        <div class="info-card animate-fade-in animate-fade-in-d4" style="animation-fill-mode: both;">
           <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-purple-500"></span>
             Estadísticas Generales
@@ -506,10 +450,9 @@
     const container = $('#section-users');
     if (!container) return;
 
-    const userStatuses = ['active', 'active', 'active', 'inactive', 'active', 'active', 'pending', 'active'];
     let rows = '';
-    AgentHub.users.forEach((user, i) => {
-      const displayStatus = userStatuses[i] || user.status;
+    AgentHub.users.forEach((user) => {
+      const displayStatus = user.status;
       rows += `
         <tr>
           <td>
@@ -720,9 +663,7 @@
         </div>
         <div>
           <p class="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">System Prompt</p>
-          <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
-            <pre class="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap font-mono leading-relaxed">${agent.systemPrompt}</pre>
-          </div>
+          <textarea rows="8" class="w-full bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-sm font-mono leading-relaxed resize-y focus:ring-2 focus:ring-blue-500 focus:outline-none">${agent.systemPrompt}</textarea>
         </div>
       </div>`;
     openModal('modal-agent-config');

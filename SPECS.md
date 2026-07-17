@@ -1,5 +1,23 @@
 # AgentHub Admin Dashboard — Especificación Técnica
 
+### ¿Qué es AgentHub?
+
+AgentHub es una plataforma SaaS que permite a empresas alquilar agentes de Inteligencia Artificial especializados para automatizar tareas de negocio. Cada agente puede incorporar diferentes **Skills** (habilidades) como navegación web, lectura de documentos, gestión de calendarios, automatización de procesos o conexión con servicios externos.
+
+El objetivo del panel es proporcionar una interfaz de administración para supervisar toda la plataforma y servir como referencia para el futuro desarrollo del backend.
+
+### Usuario administrador
+
+El único usuario del prototipo es el **Administrador interno de AgentHub**, responsable de:
+
+- Supervisar las métricas generales de la plataforma.
+- Gestionar usuarios registrados.
+- Administrar agentes IA.
+- Consultar el catálogo de Skills.
+- Revisar contratos de alquiler.
+- Monitorizar errores de ejecución.
+- Acceder rápidamente a información mediante modales y menús de acciones.
+
 ## Versión
 1.0 — Prototipo Frontend
 
